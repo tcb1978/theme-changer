@@ -20,28 +20,45 @@ class App extends Component {
     this.updateColor = this.updateColor.bind(this)
     this.updateSize = this.updateSize.bind(this)
     this.updateEditStatus = this.updateEditStatus.bind(this)
+    this.updateFamily = this.updateFamily.bind(this)
   }
-  updateColor() {
+  updateColor(val) {
     this.setState({
       fontColor: val
     })
   }
 
-  // updateSize
+  updateSize(val) {
+    this.setState({
+      fontSize: val
+    })
+  }
 
-  // updateFamily
+  updateFamily(val) {
+    this.setState({
+      fontFamily: val
+    })
+  }
 
-  // updateEditStatus
+  updateEditStatus(val) {
+    this.setState({
+      allowEdit: val
+    })
+  }
 
   render() {
     return (
       <div>
+      <h1>Font Color: {this.state.fontColor}</h1>
         <div className="headerBar">
           { /* Render EditToggle */ }
+          <EditToggle update={this.updateEditStatus} />
           { /* Render ColorChanger */ }
           <ColorChanger update={this.updateColor}/>
           { /* Render SizeChanger */ }
+          <SizeChanger update={this.updateSize} />
           { /* Render FamilyChanger */ }
+          <FamilyChanger update={this.updateFamily} />
         </div>
         <div className="textArea">
           { /* Render TextContainer */ }
